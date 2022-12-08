@@ -31,16 +31,17 @@ namespace EmployeeManagement
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                DeveloperExceptionPageOptions developerExceptionPageOptions = new DeveloperExceptionPageOptions()
+                {
+                    SourceCodeLineCount = 10
+                };
+                app.UseDeveloperExceptionPage(developerExceptionPageOptions);
             }
-            FileServerOptions defaultFilesOptions = new FileServerOptions();
-            defaultFilesOptions.DefaultFilesOptions.DefaultFileNames.Clear();
-            defaultFilesOptions.DefaultFilesOptions.DefaultFileNames.Add("foo.html");
 
-            app.UseFileServer(defaultFilesOptions);
-            
+            app.UseFileServer();
 
             app.Run(async (context) => {
+                throw new Exception("Some Error Ocured");
                 await context.Response.WriteAsync("Hello World!");
             });
             //app.UseRouting();
