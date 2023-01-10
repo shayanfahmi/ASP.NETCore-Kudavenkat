@@ -3,6 +3,16 @@
     <title></title>
 </head>
 <body>
-    <h1>Details.cshtml from Views/Home folder</h1>
+    <h3>@ViewBag.PageTitle</h3>
+
+    <div>
+        Name: @ViewBag.Employee.Name
+    </div>
+    <div>
+        Email: @ViewBag.Employee.Email
+    </div>
+    <div>
+        Department: @ViewBag.Employee.Department
+    </div>
 </body>
 </html>
